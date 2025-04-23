@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:flutter/services.dart'; // Para controlar a barra de navegação
 
-void main() => runApp(MaterialApp(
+void main() {
+  runApp(MaterialApp(
     builder: (context, child) {
       return Directionality(textDirection: TextDirection.ltr, child: child!);
     },
@@ -10,7 +12,9 @@ void main() => runApp(MaterialApp(
     theme: ThemeData(
       primaryColor: Colors.grey[800],
     ),
-    home: Example()));
+    home: Example(),
+  ));
+}
 
 class Example extends StatefulWidget {
   @override
@@ -41,12 +45,26 @@ class _ExampleState extends State<Example> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    // Ocultar a barra de navegação
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+  }
+
+  @override
+  void dispose() {
+    // Restaurar o comportamento padrão quando a tela for descartada
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 20,
-        title: const Text('GoogleNavBar'),
+        title: const Text('test2'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
