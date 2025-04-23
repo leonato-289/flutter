@@ -47,8 +47,8 @@ class _ExampleState extends State<Example> {
   @override
   void initState() {
     super.initState();
-    // Ocultar a barra de navegação
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+    // Definir o app como imersivo, sem a barra de gestos ou status
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   }
 
   @override
