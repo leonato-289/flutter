@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:flutter/services.dart'; // Para controlar a barra de navegação
+import 'package:flutter/services.dart'; // Para controlar a interface de usuário
 
 void main() {
   runApp(MaterialApp(
@@ -47,8 +47,15 @@ class _ExampleState extends State<Example> {
   @override
   void initState() {
     super.initState();
-    // Definir o app como imersivo, sem a barra de gestos ou status
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    // Configurar a interface para preencher a tela inteira (inclusive as barras de status e navegação)
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+    // Definir a cor da barra de status e de navegação
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.white, // Cor da barra de status
+      systemNavigationBarColor: Colors.white, // Cor da barra de navegação
+      systemNavigationBarIconBrightness: Brightness.dark, // Ícones da barra de navegação em cor escura
+    ));
   }
 
   @override
