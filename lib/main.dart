@@ -71,7 +71,7 @@ class _ExampleState extends State<Example> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 20,
-        title: const Text('test2'),
+        title: const Text('meu projeto'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
